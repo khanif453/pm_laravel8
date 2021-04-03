@@ -7,7 +7,7 @@
   - git clone https://github.com/khanif453/pm_laravel8 ( tunggu hingga proses selesai )
   - cd pm_laravel
   - composer install ( tunggu hingga proses selesai )
-  - composer required laravel/ui ( tunggu hingga proses selesai )
+  - composer require laravel/ui ( tunggu hingga proses selesai )
   - buka XAMPP lalu buat database baru
   - buka visual studio code, lalu jalankan perintah ( copy .env.example .env ) pada terminal visual studio code
   - buka file .env dan setting database dengan database yg telah di buat tadi
