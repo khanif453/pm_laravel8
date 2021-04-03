@@ -8,7 +8,7 @@ class Pengaduan extends Model
 {
     protected $table ="pengaduan";
 
-    protected $fillable = ['tgl_pengaduan', 'nik', 'isi_laporan', 'foto', 'status'];
+    protected $fillable = ['tgl_pengaduan', 'masyarakat_id', 'isi_laporan', 'foto', 'status'];
 
     public function masyarakat(){
         return $this->belongsTo('App\Models\Masyarakat');
