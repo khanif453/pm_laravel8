@@ -13,6 +13,7 @@ class PengaduhanController extends Controller
     public function index()
     {
         $pengaduan = Pengaduan::with('masyarakat')->latest()->paginate(10);
+        
         return view('masyarakat.pengaduan.index', compact(['pengaduan']));
     }
 
@@ -51,8 +52,6 @@ class PengaduhanController extends Controller
 
     public function show($id)
     {
-        $items =  Auth::guard('masyarakat')->user()->nama;
-
         $pengaduan = Pengaduan::find($id);
         return view('admin.pengaduan.show', compact(['pengaduan']));
     }

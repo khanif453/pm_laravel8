@@ -11,14 +11,15 @@
       	<form method="POST" action="{{ route('admin.masyarakat.store') }}" autocomplete="off">
       	  @csrf
 						<label for="nik" class="block">NIK</label>
-            <input id="nik" type="text" class="form-control{{ $errors->has('nik') ? ' is-invalid' : '' }}" name="nik" value="{{ old('nik') }}" required autofocus>
+            <input id="nik" type="text" class="form-control" name="nik" value="{{ old('nik') }}" required autofocus>
             <div class="text-danger">
 							@error('nik')
 								{{ $message }}
 							@enderror
 						</div>
+						<br>
             <label for="nama" class="block">Nama Lengkap</label>
-            <input id="nama" type="text" class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" name="nama" value="{{ old('nama') }}" required autofocus>
+            <input id="nama" type="text" class="form-control" name="nama" value="{{ old('nama') }}" required>
             <div class="text-danger">
 							@error('nama')
 								{{ $message }}
@@ -26,7 +27,7 @@
 						</div>
 						<br>
             <label for="username" class="block">Username</label>
-            <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
+            <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required>
 						<div class="text-danger">
 							@error('username')
 								{{ $message }}
@@ -34,7 +35,7 @@
 						</div>
 						<br>
 						<label for="telp" class="block">No. HP</label>
-						<input id="telp" type="text" class="form-control{{ $errors->has('telp') ? ' is-invalid' : '' }}" name="telp" value="{{ old('telp') }}" required autofocus>
+						<input id="telp" type="number" class="form-control" name="telp" value="{{ old('telp') }}" required>
 						<div class="text-danger">
 							@error('telp')
 								{{ $message }}
@@ -42,7 +43,7 @@
 						</div>
 						<br>
             <label for="password" class="block">Password</label>
-            <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+            <input id="password" type="password" class="form-control" name="password" required>
             <div class="text-danger">
 							@error('password')
 								{{ $message }}

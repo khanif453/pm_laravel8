@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2021 at 11:05 PM
+-- Generation Time: Apr 02, 2021 at 04:48 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel_pm`
+-- Database: `pm_laravel8`
 --
 
 -- --------------------------------------------------------
@@ -37,14 +37,6 @@ CREATE TABLE `masyarakat` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `masyarakat`
---
-
-INSERT INTO `masyarakat` (`id`, `nik`, `nama`, `username`, `password`, `telp`, `created_at`, `updated_at`) VALUES
-(1, '1234567891234567', 'masyarakat', 'masyarakat', '$2y$10$GTMvtqrx2F/yjlTkFQJJTOQ0yCsZdU1p7We8mjuZC.rVXVa4xkNuu', '089123456789', '2021-03-27 09:40:24', '2021-03-27 09:40:24'),
-(3, '1234512345123452', 'ahmad', 'masas', '$2y$10$tLmEryddxWKQL3.EWwSeK.fNasm1p7qIRrrcJjLdQ69yGGYX5Oa.e', '12345123465', '2021-03-27 13:35:30', '2021-03-27 13:39:38');
 
 -- --------------------------------------------------------
 
@@ -93,17 +85,10 @@ CREATE TABLE `pengaduan` (
   `masyarakat_id` int(10) UNSIGNED NOT NULL,
   `isi_laporan` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `status` enum('spam','proses','selesai') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'proses',
+  `status` enum('0','proses','selesai') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'proses',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `pengaduan`
---
-
-INSERT INTO `pengaduan` (`id`, `tgl_pengaduan`, `masyarakat_id`, `isi_laporan`, `foto`, `status`, `created_at`, `updated_at`) VALUES
-(4, '2021-03-27', 1, 'll', 'uploads/1616878208-hhNAeQzg.png', 'selesai', '2021-03-27 13:50:08', '2021-03-27 14:08:24');
 
 -- --------------------------------------------------------
 
@@ -128,8 +113,8 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`id`, `nama`, `username`, `password`, `telp`, `level`, `created_at`, `updated_at`, `status`) VALUES
-(1, 'admin', 'admin', '$2y$10$hyvk4nW.XZcaKq5eTEglY.8eM3akQPXDFzvRaia3A3L3MAKoKhDzm', '089123456789', 'Admin', '2021-03-27 09:42:39', '2021-03-27 09:42:39', 1),
-(2, 'petugas', 'petugas', '$2y$10$iY.OCNsmubRbp4FL1NcXlOx0Hs1GgYIxq0aS7ElsNBPhj4cejjTBO', '089123456789', 'Petugas', '2021-03-27 09:43:33', '2021-03-27 09:43:33', 1);
+(1, 'admin', 'admin', '$2y$10$nQ4r2EeiZsStUv5RKAlhnecxoLNmtpcWmIwvXZztPodGGkEENybbi', '089123456789', 'Admin', '2021-04-02 13:34:22', '2021-04-02 13:47:10', 1),
+(2, 'petugas', 'petugas', '$2y$10$5weeTlIi2PKn6hWDQ4l1oubDPXHadmjAgTWyUBh67lfHuz9pSwWcC', '089123456789', 'Petugas', '2021-04-02 13:37:59', '2021-04-02 13:37:59', 1);
 
 -- --------------------------------------------------------
 
@@ -143,17 +128,10 @@ CREATE TABLE `tanggapan` (
   `tgl_tanggapan` date NOT NULL,
   `tanggapan` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `petugas_id` int(10) UNSIGNED NOT NULL,
-  `status` enum('spam','proses','selesai') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'proses',
+  `status` enum('0','proses','selesai') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'proses',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `tanggapan`
---
-
-INSERT INTO `tanggapan` (`id`, `pengaduan_id`, `tgl_tanggapan`, `tanggapan`, `petugas_id`, `status`, `created_at`, `updated_at`) VALUES
-(2, 4, '2021-03-27', 'Laporan Telah di Terima', 1, 'selesai', '2021-03-27 14:08:24', '2021-03-27 14:08:24');
 
 --
 -- Indexes for dumped tables
@@ -203,7 +181,7 @@ ALTER TABLE `tanggapan`
 -- AUTO_INCREMENT for table `masyarakat`
 --
 ALTER TABLE `masyarakat`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -215,7 +193,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `petugas`
@@ -227,7 +205,7 @@ ALTER TABLE `petugas`
 -- AUTO_INCREMENT for table `tanggapan`
 --
 ALTER TABLE `tanggapan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

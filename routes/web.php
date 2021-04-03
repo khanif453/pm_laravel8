@@ -40,28 +40,11 @@ Route::name('admin.')->namespace('Admin')->group(function () {
         Route::get('/masyarakat', 'UsersController@indexMasyarakat')->name('users.indexMasyarakat');
 
         Route::resource('/petugas', 'PetugasController', ['except' => ['index', 'show']]);
-        Route::put('/petugas/{id}/status', 'PetugasController@updateStatus')->name('petugas.status.update');
+        Route::put('/petugas/{id_petugas}/status', 'PetugasController@updateStatus')->name('petugas.status.update');
         Route::get('/petugas/createPetugas', 'PetugasController@createPetugas')->name('petugas.createPetugas');
         Route::post('/petugas/createPetugas/store', 'PetugasController@storePetugas')->name('petugas.storePetugas');
 
         Route::resource('/masyarakat', 'MasyarakatController', ['except' => ['index', 'show']]);
-
-        Route::get('/laporan', 'LaporanController@index')->name('laporan');
-        Route::get('/laporan/users/excel', 'LaporanController@usersExcel')->name('laporan.users.excel');
-        Route::get('/laporan/users/admin/excel', 'LaporanController@usersAdminExcel')->name('laporan.users.admin.excel');
-        Route::get('/laporan/users/petugas/excel', 'LaporanController@usersPetugasExcel')->name('laporan.users.petugas.excel');
-        Route::get('/laporan/users/masyarakat/excel', 'LaporanController@usersMasyarakatExcel')->name('laporan.users.masyarakat.excel');
-
-        Route::get('/laporan/pengaduan/excel', 'LaporanController@pengaduanExcel')->name('laporan.pengaduan.excel');
-        Route::get('/laporan/tanggapan/excel', 'LaporanController@tanggapanExcel')->name('laporan.tanggapan.excel');
-
-        Route::get('/laporan/users/pdf', 'LaporanController@usersPDF')->name('laporan.users.pdf');
-        Route::get('/laporan/users/admin/pdf', 'LaporanController@usersAdminPDF')->name('laporan.users.admin.pdf');
-        Route::get('/laporan/users/petugas/pdf', 'LaporanController@usersPetugasPDF')->name('laporan.users.petugas.pdf');
-        Route::get('/laporan/users/masyarakat/pdf', 'LaporanController@usersMasyarakatPDF')->name('laporan.users.masyarakat.pdf');
-
-        Route::get('/laporan/pengaduan/pdf', 'LaporanController@pengaduanPDF')->name('laporan.pengaduan.pdf');
-        Route::get('/laporan/tanggapan/pdf', 'LaporanController@tanggapanPDF')->name('laporan.tanggapan.pdf');
     });
 });
 

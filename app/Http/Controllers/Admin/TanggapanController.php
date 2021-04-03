@@ -41,6 +41,6 @@ class TanggapanController extends Controller
     public function destroy($id)
     {
         Tanggapan::destroy($id);
-        return redirect()->back()->with('status', 'Data has been deleted!');
+        return redirect()->back()->with('status', 'Data telah di hapus !');
     }
 }

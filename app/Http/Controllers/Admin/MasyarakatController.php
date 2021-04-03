@@ -16,27 +16,27 @@ class MasyarakatController extends Controller
 
 	public function store(Request $request)
 	{
-    $request->validate([
-      'nik'       => 'required|string|min:16|max:16',
-      'nama'       => 'required|string',
-      'telp'       => 'required|numeric',
-      'username'   => 'required|string|unique:masyarakat|min:5',
-      'password'   => 'required|string|min:8|confirmed',
-    ], [
+		$request->validate([
+			'nik'       => 'required|string|min:16|max:16',
+			'nama'       => 'required|string',
+			'telp'       => 'required|min:10|max:13',
+			'username'   => 'required|string|unique:masyarakat|min:5',
+			'password'   => 'required|string|min:8|confirmed',
+		], [
 			'nik.required' => 'Nik harus di isi',
-			'nik.min' => 'Nik min 16',
-			'nik.max' => 'Nik max 16',
-      'nama.required' => 'Nama harus di isi',
-      'telp.required' => 'Telepon harus di isi',
-      'username.required'  => 'Username harus di isi',
-      'username.unique'    => 'Username sudah ada',
-      'username.min'  => 'Username min 5',
-      'password.required'  => 'Password harus di isi',
-      'password.min'  => 'Password min 8',
-      'password.confirmed' => 'Password tidak cocok'
-    ]);
+			'nik.min' => 'Nik harus 16',
+			'nik.max' => 'Nik harus 16',
+			'nama.required' => 'Nama harus di isi',
+			'telp.min' => 'Telepon min 10',
+			'telp.max' => 'Telepon max 13',
+			'username.required'  => 'Username harus di isi',
+			'username.unique'    => 'Username sudah ada',
+			'username.min'  => 'Username min 5',
+			'password.required'  => 'Password harus di isi',
+			'password.min'  => 'Password min 8',
+			'password.confirmed' => 'Password tidak cocok'
+		]);
 
-		// $this->validator($request);
 		$masyarakat = $request->all();
 
 		Masyarakat::create([
@@ -59,27 +59,23 @@ class MasyarakatController extends Controller
 	public function update(Request $request, $id)
 	{
 		$request->validate([
-      'nik'       => 'required|string|min:16|max:16',
-      'nama'       => 'required|string',
-      'telp'       => 'required|numeric'
-    ], [
+			'nik'       => 'required|string|min:16|max:16',
+			'nama'       => 'required|string',
+			'telp'       => 'required|min:10|max:13'
+		], [
 			'nik.required' => 'Nik harus di isi',
-			'nik.min' => 'Nik min 16',
-			'nik.max' => 'Nik max 16',
-      'nama.required' => 'Nama harus di isi',
-      'telp.required' => 'Telepon harus di isi',
-    ]);
+			'nik.min' => 'Nik harus 16',
+			'nik.max' => 'Nik harus 16',
+			'nama.required' => 'Nama harus di isi',
+			'telp.required' => 'Telepon harus di isi',
+			'telp.min' => 'Telepon min 10',
+			'telp.max' => 'Telepon max 13',
+		]);
 
-		// $this->validator($request);
 		$masyarakat = $request->all();
 
-		// $this->validate($request, [
-		// 	'nik' => 'required|numeric',
-		// 	'nama' => 'required',
-		// 	'telp' => 'required|numeric'
-		// ]);
-
 		$masyarakat = Masyarakat::find($id);
+
 		$masyarakat->update([
 			'nik' => $request->nik,
 			'nama' => $request->nama,
@@ -98,7 +94,6 @@ class MasyarakatController extends Controller
 	public function destroy($id)
 	{
 		Masyarakat::destroy($id);
-		return redirect()->route('admin.users.indexMasyarakat')->with('pesan', 'Data telah di hapus !
-		');
+		return redirect()->route('admin.users.indexMasyarakat')->with('pesan', 'Data telah di hapus !');
 	}
 }

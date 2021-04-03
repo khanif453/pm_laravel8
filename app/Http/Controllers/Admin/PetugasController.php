@@ -19,13 +19,14 @@ class PetugasController extends Controller
   {
     $request->validate([
       'nama'       => 'required|string',
-      'telp'       => 'required|min:10|numeric',
+      'telp'       => 'required|string|min:10|max:13',
       'username'   => 'required|string|unique:petugas|min:5',
       'password'   => 'required|string|min:8|confirmed',
     ], [
       'nama.required' => 'Nama harus di isi',
       'telp.required' => 'Telepon harus di isi',
       'telp.min' => 'Telepon min 10',
+      'telp.max' => 'Telepon max 13',
       'username.required' => 'Username harus di isi',
       'username.unique' => 'Username sudah ada',
       'username.min' => 'Usernaem min 5',
@@ -50,10 +51,6 @@ class PetugasController extends Controller
 
   public function edit($id)
   {
-    if (Auth::guard('petugas')->user()->id == $id) {
-      return redirect()->route('admin.users.index')->with('error', 'You are not allowed to edit yourself.');
-    }
-
     $admin = Petugas::find($id);
     return view('admin.users.petugas.edit', compact(['admin']));
   }
@@ -62,8 +59,11 @@ class PetugasController extends Controller
   {
     $this->validate($request, [
       'nama' => 'required',
-      'telp' => 'required|numeric',
+      'telp' => 'required|min:10|max:13',
       'level' => 'required'
+    ],[
+      'telp.min' => 'No. HP min 10',
+      'telp.max' => 'No. HP max 13'
     ]);
 
     $admin = Petugas::find($id);
@@ -97,35 +97,6 @@ class PetugasController extends Controller
     return redirect()->route('admin.users.indexPetugas')->with('pesan', 'Data berhasil di hapus !');
   }
 
-  public function updateStatus($id)
-  {
-    if (Auth::guard('petugas')->user()->id == $id) {
-      return redirect()->route('admin.users.index')->with('error', 'You are not allowed to actived/deactive yourself.');
-    }
-
-    $user = Petugas::find($id);
-
-    if ($user->status == 1) {
-      $user->status = '0';
-      $user->save();
-      if ($user->level == 'Admin') {
-        return redirect()->route('admin.users.index')->with('status', 'User has been updated!');
-      }
-      return redirect()->route('admin.users.indexPetugas')->with('warning', 'This account has been deactive!');
-    }
-
-    if ($user->status == 0) {
-      $user->status = '1';
-      $user->save();
-
-      if ($user->level == 'Admin') {
-        return redirect()->route('admin.users.index')->with('status', 'User has been updated!');
-      }
-
-      return redirect()->route('admin.users.indexPetugas')->with('status', 'This account has been actived!');
-    }
-  }
-
   public function createPetugas()
   {
     return view('admin.users.petugas.createPetugas');
@@ -135,13 +106,14 @@ class PetugasController extends Controller
   {
     $request->validate([
       'nama'       => 'required|string',
-      'telp'       => 'required|min:10|numeric',
+      'telp'       => 'required|string|min:10|max:13',
       'username'   => 'required|string|unique:petugas|min:5',
       'password'   => 'required|string|min:8|confirmed',
     ], [
       'nama.required' => 'Nama harus di isi',
       'telp.required' => 'Telepon harus di isi',
       'telp.min'      => 'Telepon min 10',
+      'telp.max'      => 'Telepon max 13',
       'username.required'  => 'Username harus di isi',
       'username.unique'    => 'Username sudah ada',
       'username.min'  => 'Usernaem min 5',

@@ -52,50 +52,55 @@
 				<div class="form-group row">
 					<div class="col-md-12">
 						<input id="nama" type="text" class="form-control" name="nama" value="{{ old('nama') }}" placeholder="Nama Lengkap" required autofocus>
-						@if ($errors->has('nama'))
-						<span class="invalid-feedback" role="alert">
-							<strong>{{ $errors->first('nama') }}</strong>
-						</span>
-						@endif
+						<div class="text-danger">
+							@error('nama')
+									{{ $message }}
+							@enderror
+						</div>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<div class="col-md-12">
-						<input id="telp" type="text" class="form-control" name="telp" value="{{ old('telp') }}" placeholder="No. HP" required>
-						@if ($errors->has('telp'))
-						<span class="invalid-feedback" role="alert">
-							<strong>{{ $errors->first('telp') }}</strong>
-						</span>
-						@endif
+						<input id="telp" type="number" class="form-control" name="telp" value="{{ old('telp') }}" placeholder="No. HP" required>
+						<div class="text-danger">
+							@error('telp')
+									{{ $message }}
+							@enderror
+						</div>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<div class="col-md-12">
 						<input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username" required>
-						@if ($errors->has('username'))
-						<span class="invalid-feedback" role="alert">
-							<strong>{{ $errors->first('username') }}</strong>
-						</span>
-						@endif
+						<div class="text-danger">
+							@error('username')
+									{{ $message }}
+							@enderror
+						</div>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<div class="col-md-12">
 						<input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
-						@if ($errors->has('password'))
-						<span class="invalid-feedback" role="alert">
-							<strong>{{ $errors->first('password') }}</strong>
-						</span>
-						@endif
+						<div class="text-danger">
+							@error('password')
+									{{ $message }}
+							@enderror
+						</div>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<div class="col-md-12">
 						<input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirmasi Password" required autocomplete="new-password">
+						<div class="text-danger">
+							@error('password')
+									{{ $message }}
+							@enderror
+						</div>
 					</div>
 				</div>
 

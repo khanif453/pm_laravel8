@@ -37,53 +37,58 @@
       @csrf
 			<div class="box-body">
 				<div class="form-group">
-					<input id="nik" type="text" class="form-control{{ $errors->has('nik') ? ' is-invalid' : '' }}"
+					<input id="nik" type="text" class="form-control"
 					name="nik" value="{{ old('nik') }}" placeholder="NIK" required autofocus>
-						@if ($errors->has('nik'))
-							<span class="invalid-feedback" role="alert">
-								<strong>{{ $errors->first('nik') }}</strong>
-								</span>
-						@endif
+					<div class="text-danger">
+						@error('nik')
+								{{ $message }}
+						@enderror
+					</div>
 				</div>
 				<div class="form-group">
-					<input id="nama" type="text" class="form-control{{ $errors->has('nama') ? ' is-invalid' : '' }}" 
+					<input id="nama" type="text" class="form-control" 
 					name="nama" value="{{ old('nama') }}" placeholder="Nama" required autofocus>
-					@if ($errors->has('nama'))
-						<span class="invalid-feedback" role="alert">
-							<strong>{{ $errors->first('nama') }}</strong>
-						</span>
-					@endif
+					<div class="text-danger">
+						@error('nama')
+								{{ $message }}
+						@enderror
+					</div>
 				</div>
 				<div class="form-group">
-					<input id="telp" type="text" class="form-control{{ $errors->has('telp') ? ' is-invalid' : '' }}" 
+					<input id="telp" type="number" class="form-control" 
 					name="telp" value="{{ old('telp') }}" placeholder="No. HP" required autofocus>
-					@if ($errors->has('telp'))
-						<span class="invalid-feedback" role="alert">
-							<strong>{{ $errors->first('telp') }}</strong>
-						</span>
-					@endif
+					<div class="text-danger">
+						@error('telp')
+								{{ $message }}
+						@enderror
+					</div>
 				</div>
 				<div class="form-group">
 					<input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" 
-					name="username" value="{{ old('username') }}" placeholder="Username" required autofocus>
-					@if ($errors->has('username'))
-						<span class="invalid-feedback" role="alert">
-							<strong>{{ $errors->first('username') }}</strong>
-						</span>
-					@endif
+					name="username" value="{{ old('username') }}" placeholder="Username" required>
+					<div class="text-danger">
+						@error('username')
+								{{ $message }}
+						@enderror
+					</div>
 				</div>
 				<div class="form-group">
 					<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" 
 					name="password" placeholder="Password" required>
-					@if ($errors->has('password'))
-						<span class="invalid-feedback" role="alert">
-							<strong>{{ $errors->first('password') }}</strong>
-						</span>
-					@endif
+					<div class="text-danger">
+						@error('password')
+								{{ $message }}
+						@enderror
+					</div>
 				</div>
 				<div class="form-group">
 					<input id="password-confirm" type="password" class="form-control" 
 					name="password_confirmation" placeholder="Confirmasi Password" required autocomplete="new-password">
+					<div class="text-danger">
+						@error('password')
+								{{ $message }}
+						@enderror
+					</div>
 				</div>
 			</div>
       <div class="form-group row mb-0">
