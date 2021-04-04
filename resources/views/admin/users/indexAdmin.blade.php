@@ -8,8 +8,8 @@
       <div class="box-header with-border">
         <h3 class="box-title">Admin</h3>
         <div class="mt-4">
-          <a href="{{ route('admin.petugas.create') }}"
-          class="btn btn-primary">Tambah Admin</a>
+          <a href="{{ route('admin.petugas.create') }}" class="btn btn-primary">
+            <i class="fa fa-plus-square"></i> Tambah Admin</a>
         </div>
         <div class="mt-3">
           @if (session('pesan'))
@@ -44,9 +44,10 @@
               <td>{{ $a->telp }}</td>
               <td>{{ $a->level }}</td>
               <td>
-                <a href="{{ route('admin.petugas.edit', $a->id) }}" class="btn btn-warning">Edit</a>
+                <a href="{{ route('admin.petugas.edit', $a->id) }}" class="btn btn-warning">
+                  <i class="fa fa-edit"></i> Edit</a>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $a->id }}">
-                  Hapus
+                  <i class="fa fa-trash"></i> Hapus
                 </button>
               </td>
             </tr>
@@ -55,30 +56,30 @@
         </table>
       </div>
       @foreach ($admin as $a)
-        <div class="modal modal-danger fade" id="delete{{ $a->id }}">
-          <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{{ $a->nama }}</h4>
-              </div>
-              <div class="modal-body">
-                <p>Apakah Anda Ingin Menghapus Data Ini??</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">NO</button>
-                <form action="{{ route('admin.petugas.destroy', $a->id) }}" method="POST">
-                  @csrf
-                  {{ method_field('DELETE') }}
-                  <button type="submit" class="btn btn-danger btn-outline">Delete</button>
-                </form>
-              </div>
+      <div class="modal modal-danger fade" id="delete{{ $a->id }}">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">{{ $a->nama }}</h4>
             </div>
-            <!-- /.modal-content -->
+            <div class="modal-body">
+              <p>Apakah Anda Ingin Menghapus Data Ini??</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">NO</button>
+              <form action="{{ route('admin.petugas.destroy', $a->id) }}" method="POST">
+                @csrf
+                {{ method_field('DELETE') }}
+                <button type="submit" class="btn btn-danger btn-outline">Delete</button>
+              </form>
+            </div>
           </div>
-          <!-- /.modal-dialog -->
+          <!-- /.modal-content -->
         </div>
+        <!-- /.modal-dialog -->
+      </div>
       @endforeach
     </div>
   </div>

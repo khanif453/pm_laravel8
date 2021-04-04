@@ -8,7 +8,8 @@
       <div class="box-header with-border">
         <h3 class="box-title">Masyarakat</h3>
         <div class="mt-4">
-          <a href="{{ route('admin.masyarakat.create') }}" class="btn btn-primary">Tambah Masyarakat</a>
+          <a href="{{ route('admin.masyarakat.create') }}" class="btn btn-primary">
+            <i class="fa fa-plus-square"></i> Tambah Masyarakat</a>
         </div>
         <div class="mt-3">
           @if (session('pesan'))
@@ -43,9 +44,10 @@
               <td>{{ $m->username }}</td>
               <td>{{ $m->telp }}</td>
               <td>
-                <a href="{{ route('admin.masyarakat.edit', $m->id) }}" class="btn btn-warning">Edit</a>
+                <a href="{{ route('admin.masyarakat.edit', $m->id) }}" class="btn btn-warning">
+                  <i class="fa fa-edit"></i> Edit</a>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $m->id }}">
-                  Hapus
+                  <i class="fa fa-trash"></i> Hapus
                 </button>
               </td>
             </tr>

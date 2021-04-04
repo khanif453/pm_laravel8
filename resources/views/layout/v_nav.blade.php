@@ -15,6 +15,9 @@
 <li class="nav-item">
     <a href="{{ route('admin.pengaduan.index') }}"><i class="fa fa-file-text"></i><span> Pengaduan</span></a>
 </li>
+<li class="nav-item">
+    <a href="{{ route('admin.laporan.index') }}"><i class="fa fa-file-word-o"></i><span> laporan</span></a>
+</li>
 @elseif(Auth::guard('petugas')->user()->level == 'Petugas' && Auth::guard('petugas')->user()->status == 1)
 <li class="nav-item">
     <a href="{{ route('petugas.home') }}"><i class="fa fa-bank"></i><span> Dashboard</span></a>

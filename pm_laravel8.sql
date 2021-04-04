@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2021 at 04:48 PM
+-- Generation Time: Apr 03, 2021 at 02:25 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -159,7 +159,8 @@ ALTER TABLE `password_resets`
 -- Indexes for table `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `masyarakat_id` (`masyarakat_id`);
 
 --
 -- Indexes for table `petugas`
@@ -171,7 +172,9 @@ ALTER TABLE `petugas`
 -- Indexes for table `tanggapan`
 --
 ALTER TABLE `tanggapan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pengaduan_id` (`pengaduan_id`),
+  ADD KEY `petugas_id` (`petugas_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -206,6 +209,23 @@ ALTER TABLE `petugas`
 --
 ALTER TABLE `tanggapan`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `pengaduan`
+--
+ALTER TABLE `pengaduan`
+  ADD CONSTRAINT `pengaduan_ibfk_1` FOREIGN KEY (`masyarakat_id`) REFERENCES `masyarakat` (`id`);
+
+--
+-- Constraints for table `tanggapan`
+--
+ALTER TABLE `tanggapan`
+  ADD CONSTRAINT `tanggapan_ibfk_1` FOREIGN KEY (`pengaduan_id`) REFERENCES `pengaduan` (`id`),
+  ADD CONSTRAINT `tanggapan_ibfk_2` FOREIGN KEY (`petugas_id`) REFERENCES `petugas` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

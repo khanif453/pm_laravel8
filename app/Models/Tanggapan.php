@@ -8,7 +8,7 @@ class Tanggapan extends Model
 {
     protected $table = "tanggapan";
 
-    protected $fillable = ['id_tanggapan', 'id_pengaduan', 'tgl_tanggapan', 'tanggapan', 'id_petugas', 'status'];
+    protected $fillable = ['pengaduan_id', 'tgl_tanggapan', 'tanggapan', 'petugas_id', 'status'];
 
     public function pengaduan(){
         return $this->belongsTo('App\Models\Pengaduan', 'id', 'id');

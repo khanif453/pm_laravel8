@@ -10,7 +10,8 @@
 				<div class="mt-4">
 					@if(Auth::guard('masyarakat')->check())
 					<a href="{{ route('masyarakat.pengaduan.create') }}">
-						<button class="btn btn-primary mb-3">Laporkan Pengaduhan</button>
+						<button class="btn btn-primary mb-3">
+							<i class="fa fa-plus-square"></i> Laporkan Pengaduhan</button>
 					</a>
 					@endif
 				</div>
@@ -55,16 +56,16 @@
 								@if (Auth::guard('petugas')->check())
 								@if (Auth::guard('petugas')->user()->level == 'Admin' && Auth::guard('petugas')->user()->status == 1)
 								<a class="btn btn-primary" href="{{ route('admin.pengaduan.show', $p->id) }}">
-									Detail
+									<i class="fa fa-eye"></i> Detail
 								</a>
 								@elseif(Auth::guard('petugas')->user()->level == 'Petugas' && Auth::guard('petugas')->user()->status == 1)
 								<a class="btn btn-primary" href="{{ route('petugas.pengaduan.show', $p->id) }}">
-									Detail
+									<i class="fa fa-eye"></i> Detail
 								</a>
 								@endif
 								@else
 								<a class="btn btn-primary" href="{{ route('masyarakat.pengaduan.show', $p->id) }}">
-									Detail
+									<i class="fa fa-eye"></i> Detail
 								</a>
 								@endif
 
@@ -74,13 +75,15 @@
 								<form action="{{ route('admin.pengaduan.destroy', $p->id) }}" method="post" class="float-right">
 									@csrf
 									{{ method_field('DELETE') }}
-									<button type="submit" class="btn btn-danger">Delete</button>
+									<button type="submit" class="btn btn-danger">
+										<i class="fa fa-trash"></i> Delete</button>
 								</form>
 								@elseif(Auth::guard('petugas')->user()->level == 'Petugas')
 								<form action="{{ route('petugas.pengaduan.destroy', $p->id) }}" method="post" class="float-right">
 									@csrf
 									{{ method_field('DELETE') }}
-									<button type="submit" class="btn btn-danger">Delete</button>
+									<button type="submit" class="btn btn-danger">
+										<i class="fa fa-trash"></i> Delete</button>
 								</form>
 								@endif
 								@endif

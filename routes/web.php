@@ -39,6 +39,14 @@ Route::name('admin.')->namespace('Admin')->group(function () {
         Route::get('/petugas', 'UsersController@indexPetugas')->name('users.indexPetugas');
         Route::get('/masyarakat', 'UsersController@indexMasyarakat')->name('users.indexMasyarakat');
 
+        // Laporan
+        Route::get('/laporan', 'LaporanController@indexLaporan')->name('laporan.index');
+        Route::get('/laporan/admin', 'LaporanController@printAdmin')->name('laporan.laporanAdmin');
+        Route::get('/laporan/petugas', 'LaporanController@printPetugas')->name('laporan.laporanPetugas');
+        Route::get('/laporan/masyarakat', 'LaporanController@printMasyarakat')->name('laporan.laporanMasyarakat');
+        Route::get('/laporan/pengaduan', 'LaporanController@printPengaduan')->name('laporan.laporanPengaduan');
+        // Laporan
+        
         Route::resource('/petugas', 'PetugasController', ['except' => ['index', 'show']]);
         Route::put('/petugas/{id_petugas}/status', 'PetugasController@updateStatus')->name('petugas.status.update');
         Route::get('/petugas/createPetugas', 'PetugasController@createPetugas')->name('petugas.createPetugas');
