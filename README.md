@@ -4,6 +4,7 @@
 
 1. Masuk ke folder htdocs lalu klik kanan pada mouse dan pilih Git Bash Here
 2. Masukkan perintah berikut pada Git Bash yg Telah di buka
+   <<<<<<< HEAD
 
 -   git clone https://github.com/khanif453/pm_laravel8 ( tunggu hingga proses selesai )
 -   cd pm_laravel8
@@ -16,7 +17,7 @@
 -   php artisan key:generate
 -   php artisan serve
 
-### Login Masyrakata
+### Login Masyarakat
 
 Silahkan registrasi untuk login ke Masyarakat
 
