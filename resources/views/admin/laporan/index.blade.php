@@ -10,7 +10,7 @@
         <hr>
         <div class="mt-4">
           <a href="{{ route('admin.laporan.laporanAdmin') }}" target="_blank"
-          class="btn btn-danger"><i class="fa fa-download"></i><span> Laporan Admin</span></a> &nbsp;
+          class="btn btn-primary"><i class="fa fa-download"></i><span> Laporan Admin</span></a> &nbsp;
           <a href="{{ route('admin.laporan.laporanPetugas') }}" target="_blank"
           class="btn btn-primary"><i class="fa fa-download"></i><span> Laporan Petugas</span></a> &nbsp;
           <a href="{{ route('admin.laporan.laporanMasyarakat') }}" target="_blank"
