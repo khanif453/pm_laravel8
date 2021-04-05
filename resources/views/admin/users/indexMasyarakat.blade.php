@@ -16,8 +16,8 @@
       </div>
       <div class="mt-3">
         @if (session('pesan'))
-        <div class="alert alert-success alert_dismissable">
-          <button type="button" class="close" data_dismiss="alert" aria-hidden="true">&times;</button>
+        <div class="alert alert-success alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           <i class="icon fa fa-check">&nbsp;
             {{ session('pesan') }}.</i>
         </div>

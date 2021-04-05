@@ -35,15 +35,15 @@
               </div>
               <hr>
               @if (session('pesan'))
-              <div class="alert alert-success alert_dismissable">
-                <button type="button" class="close" data_dismiss="alert" aria-hidden="true">&times;</button>
+              <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <i class="icon fa fa-check">&nbsp;
                   {{ session('pesan') }}.</i>
               </div>
               @endif
               @if (session('error'))
-              <div class="alert alert-danger alert_dismissable">
-                <button type="button" class="close" data_dismiss="alert" aria-hidden="true">&times;</button>
+              <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <i class="icon fa fa-ban">&nbsp;
                   {{ session('error') }}.</i>
               </div>
