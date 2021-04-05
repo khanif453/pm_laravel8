@@ -68,20 +68,24 @@
 										@enderror
 									</div>
 								</div>
-								<div class="form-group">
-									<input id="password" type="password" class="form-control form-control-user" name="password" placeholder="Password" required>
-									<div class="text-danger">
-										@error('password')
-										{{ $message }}
-										@enderror
+								<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input id="password" type="password" class="form-control form-control-user" name="password" placeholder="Password" required>
+										<div class="text-danger">
+											@error('password')
+											{{ $message }}
+											@enderror
+										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<input id="password-confirm" type="password" class="form-control form-control-user" name="password_confirmation" placeholder="Confirmasi Password" required autocomplete="new-password">
-									<div class="text-danger">
-										@error('password')
-										{{ $message }}
-										@enderror
+									<!-- </div> -->
+									<!-- <div class="form-group"> -->
+									<div class="col-sm-6">
+										<input id="password-confirm" type="password" class="form-control form-control-user" name="password_confirmation" placeholder="Confirmasi Password" required autocomplete="new-password">
+										<div class="text-danger">
+											@error('password')
+											{{ $message }}
+											@enderror
+										</div>
 									</div>
 								</div>
 								<br>
