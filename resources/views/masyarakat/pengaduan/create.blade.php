@@ -27,7 +27,7 @@
         <div class="form-group">
           <label>
             <span>Foto</span>
-            <input type="file" value="{{ old('foto')}}" name="foto" alt="foto" required>
+            <input type="file" value="{{ old('foto')}}" name="foto" alt="foto">
           </label>
           <div class="text-danger">
             @error('foto')

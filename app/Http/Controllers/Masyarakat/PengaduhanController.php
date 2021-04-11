@@ -12,9 +12,10 @@ class PengaduhanController extends Controller
 
     public function index()
     {
-        $pengaduan = Pengaduan::with('masyarakat')->latest()->paginate(10);
-        
-        return view('masyarakat.pengaduan.index', compact(['pengaduan']));
+        // $pengaduan = Pengaduan::with('masyarakat')->latest()->paginate(10);
+        $pengaduan = Pengaduan::where('masyarakat_id', Auth::guard('masyarakat')->user()->id)->get();
+
+        return view('masyarakat.pengaduan.show', compact(['pengaduan']));
     }
 
     public function create()
@@ -26,7 +27,7 @@ class PengaduhanController extends Controller
     {
         $request->validate([
             'isi_laporan' => 'required',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg',
+            'foto' => 'image|mimes:jpeg,png,jpg',
         ]);
 
         $pengaduan = Pengaduan::create([
@@ -46,7 +47,7 @@ class PengaduhanController extends Controller
             $pengaduan->foto = $filepath;
             $pengaduan->save();
         }
-
+        
         return redirect()->route('masyarakat.pengaduan.index')->with('pesan', 'Laporan telah di tambahkan');
     }
 
@@ -61,7 +62,7 @@ class PengaduhanController extends Controller
         $pengaduan = Pengaduan::find($id);
 
         if ($pengaduan) {
-            if ($image_path = $pengaduan->foto) {
+            if ($image_path = 'uploads/' . $pengaduan->foto) {
                 unlink($image_path);
             }
 

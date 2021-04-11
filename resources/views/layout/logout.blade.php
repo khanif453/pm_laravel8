@@ -1,7 +1,7 @@
 @if(Auth::guard('petugas')->check() && Auth::guard('petugas')->user()->status == 1)
 <li class="nav-item dropdown no-arrow">
   <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="mr-2 d-none d-lg-inline text-gray-600">
+    <span class="mr-2 d-none d-lg-inline text-white badge badge-danger text-uppercase">
       @if(Auth::guard('petugas')->check()) {{ Auth::guard('petugas')->user()->nama }} @endif
     </span>
   </a>
@@ -16,7 +16,7 @@
 @elseif(Auth::guard('masyarakat')->check())
 <li class="nav-item dropdown no-arrow">
   <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="mr-2 d-none d-lg-inline text-gray-600">
+    <span class="mr-2 d-none d-lg-inline text-white badge badge-danger text-uppercase">
       @if(Auth::guard('masyarakat')) {{ Auth::guard('masyarakat')->user()->nama }} @endif
     </span>
   </a>

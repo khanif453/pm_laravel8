@@ -33,7 +33,7 @@
           <tbody>
             <tr>
               <td>
-                <img src="{{ asset($pengaduan->foto) }}" width="190" alt="Foto">
+                <img src="{{ asset($pengaduan->foto) }}" width="190" alt="">
               </td>
               <td>{{ $pengaduan->isi_laporan }}</td>
               @foreach ($pengaduan->tanggapan as $response)
@@ -77,7 +77,8 @@
     <br>
     <hr>
     <br>
-    @if(Auth::guard('petugas')->check() && Auth::guard('petugas')->user()->status == 1)
+    @if(Auth::guard('petugas')->check())
+    @if (Auth::guard('petugas')->user()->level == 'Admin' && Auth::guard('petugas')->user()->status == 1)
     <h3 class="text-center">Berikan Tanggapan</h3>
     <div class="card-body">
       <form method="POST" action="{{ route('admin.pengaduan.tanggapan.store', $pengaduan->id) }}" enctype="multipart/form-data">
@@ -107,6 +108,38 @@
         </div>
       </form>
     </div>
+    @elseif (Auth::guard('petugas')->user()->level == 'Petugas' && Auth::guard('petugas')->user()->status == 1)
+    <h3 class="text-center">Berikan Tanggapan</h3>
+    <div class="card-body">
+      <form method="POST" action="{{ route('petugas.pengaduan.tanggapan.store', $pengaduan->id) }}" enctype="multipart/form-data">
+        @csrf
+        <label for="tanggapan">
+          Tanggapan
+        </label>
+        <textarea rows="5" id="tanggapan" name="tanggapan" class="form-control" placeholder="Berikan tanggapan anda ..." required>{{ old('tanggapan') }}</textarea>
+        <br>
+        <label for="status">
+          Status
+        </label>
+        <select name="status" id="status" class="form-control" required>
+          <option value="">Please Select</option>
+          <option value="proses">
+            Proses
+          </option>
+          <option value="selesai">
+            Selesai
+          </option>
+        </select>
+        <br>
+        <div class="small">
+          <button type="submit" class="btn btn-primary">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+    @endif
+    @else
     @endif
   </div>
 </div>

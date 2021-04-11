@@ -23,6 +23,15 @@
         </div>
         @endif
       </div>
+      <div class="mt-3">
+        @if (session('error'))
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <i class="icon fa fa-ban">&nbsp;
+            {{ session('error') }}.</i>
+        </div>
+        @endif
+      </div>
     </div>
     <div class="card-body">
       <div class="table-responsive">

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Masyarakat;
 use Illuminate\Database\Eloquent\Model;
 
 class Pengaduan extends Model
@@ -16,5 +17,10 @@ class Pengaduan extends Model
 
     public function tanggapan(){
         return $this->hasMany('App\Models\Tanggapan');
+    }
+
+    public function pengaduan()
+    {
+    	return $this->hasOne(Masyarakat::class,'masyarakat_id', 'id');
     }
 }

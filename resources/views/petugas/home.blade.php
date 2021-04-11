@@ -28,7 +28,9 @@
 						<div class="card-body">
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
-									<div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Petugas</div>
+									<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+										<a href="{{ route('admin.users.indexPetugas') }}" class="text-success"> Jumlah Petugas</a>
+									</div>
 									<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $petugas }}</div>
 								</div>
 								<div class="col-auto">
@@ -43,7 +45,9 @@
 						<div class="card-body">
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
-									<div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jumlah Masyarakat</div>
+									<div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+										<a href="{{ route('admin.users.indexMasyarakat') }}" class="text-info"> Jumlah Masyarakat</a>
+									</div>
 									<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $masyarakat }}</div>
 								</div>
 								<div class="col-auto">
@@ -58,7 +62,9 @@
 						<div class="card-body">
 							<div class="row no-gutters align-items-center">
 								<div class="col mr-2">
-									<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Jumlah Pengaduan</div>
+									<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+										<a href="{{ route('admin.pengaduan.index') }}" class="text-warning"> Jumlah Pengaduan</a>
+									</div>
 									<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pengaduan }}</div>
 								</div>
 								<div class="col-auto">

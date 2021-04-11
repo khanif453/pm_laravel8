@@ -56,14 +56,14 @@ Route::name('admin.')->namespace('Admin')->group(function () {
 });
 
 Route::prefix('/admin')->name('admin.')->middleware('auth.petugas', 'admin')->group(function () {
-    Route::resource('/pengaduan', 'Masyarakat\PengaduhanController', ['except' => ['edit', 'update']]);
+    Route::resource('/pengaduan', 'Admin\TanggapanController');
     Route::post('/pengaduan/tanggapan/store/{pengaduan}', 'Admin\TanggapanController@store', ['except' => ['show', 'create', 'edit', 'update']])->name('pengaduan.tanggapan.store');
 
     Route::resource('/tanggapan', 'Admin\TanggapanController', ['except' => ['show', 'create', 'edit', 'update']]);
 });
 
 Route::prefix('/petugas')->name('petugas.')->middleware('auth.petugas', 'petugas')->group(function () {
-    Route::resource('/pengaduan', 'Masyarakat\PengaduhanController', ['except' => ['edit', 'update']]);
+    Route::resource('/pengaduan', 'Admin\TanggapanController');
     Route::post('/pengaduan/tanggapan/store/{pengaduan}', 'Admin\TanggapanController@store', ['except' => ['show', 'create', 'edit', 'update']])->name('pengaduan.tanggapan.store');
 
     Route::resource('/tanggapan', 'Admin\TanggapanController', ['except' => ['show', 'create', 'edit', 'update']]);
